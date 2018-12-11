@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class Move : MonoBehaviour {
 
-    private void OnMouseUpAsButton()
+    private void OnMouseUp()
     {
-        print("This is " + this.tag);
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
+        if(this.tag != "sheep" && this.tag != "wolf")
         {
-            GameManager.instance.SelectAnimal(hit.collider.gameObject);
+            print("This is not an animal!");
+            return;
+        }
+
+        if (GameManager.instance.flag == 0)
+        {
+            GameManager.instance.flag = 1;
+            GameManager.instance.SelectAnimal(this.gameObject);
+        }
+        else
+        {
+            GameManager.instance.flag = 0;
+            GameManager.instance.SelectAnimal(null);
         }
     }
 }

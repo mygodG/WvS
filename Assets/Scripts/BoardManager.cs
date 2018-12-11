@@ -36,7 +36,7 @@ public class BoardManager : MonoBehaviour {
         {
             for (int y = 0; y < 4; y += 2)
             {
-                GameObject instance1 = Instantiate(sheep, new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
+                GameObject instance1 = Instantiate(sheep, new Vector3(x, y, -5f), Quaternion.identity) as GameObject;
                 instance1.transform.SetParent(boardHolder);
             }
         }

@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardScript: {fileID: 0}
+  flag: 0
 --- !u!4 &1450556
 Transform:
   m_ObjectHideFlags: 0

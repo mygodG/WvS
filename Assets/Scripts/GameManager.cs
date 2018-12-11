@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     public BoardManager boardScript;
     public static GameManager instance = null;
     private GameObject selectedAnimal = null;
+    public int flag = 0;
 
     public void SelectAnimal(GameObject gameObject)
     {
@@ -22,17 +23,26 @@ public class GameManager : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start () 
+    {
         boardScript = GetComponent<BoardManager>();
         boardScript.BoardSetup();
-
     }
 	
 	// Update is called once per frame
-	void Update () {
-        if (selectedAnimal != null)
+	void Update () 
+    {
+        if (null != selectedAnimal)
         {
-            selectedAnimal.transform.position = Input.mousePosition;
+            print(selectedAnimal.tag);
         }
+
+        if (flag == 1)
+        {
+            selectedAnimal.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            selectedAnimal.transform.position = new Vector3(selectedAnimal.transform.position.x, selectedAnimal.transform.position.y, -5f);
+            Debug.Log(selectedAnimal.transform.position);
+        }
+
     }
 }
